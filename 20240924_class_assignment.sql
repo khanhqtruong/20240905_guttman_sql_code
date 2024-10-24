@@ -36,94 +36,71 @@ USE 20240924_testdb;
 DROP TABLE IF EXISTS suppliers;
 
 CREATE TABLE IF NOT EXISTS suppliers(
-  supplier_id    INT  AUTO_INCREMENT,
-  company_name       VARCHAR(255),
-  contact_name        VARCHAR(30),
-  City               VARCHAR(15),
-  Country            VARCHAR(15),
-  Phone              VARCHAR(24),
-  Fax                VARCHAR(24),
+  supplierId    INT  AUTO_INCREMENT,
+  companyName       VARCHAR(255),
+  contactName        VARCHAR(30),
+  city               VARCHAR(15),
+  country            VARCHAR(15),
+  phone              VARCHAR(24),
+  fax                VARCHAR(24),
 
-  PRIMARY KEY   (supplier_id)
+  PRIMARY KEY   (supplierId)
 );
-
-DROP TABLE IF EXISTS deliveries;
-
-CREATE TABLE IF NOT EXISTS deliveries(
-  delivery_id               INT    AUTO_INCREMENT,
-  delivery_date            DATE,
-  warehouse_id             INT,
-
-  PRIMARY KEY (delivery_id),
-  FOREIGN KEY(warehouse_id) REFERENCES warehouses (warehouse_id)
-
-);
-
-
-
 
 DROP TABLE IF EXISTS products;
 
 CREATE TABLE IF NOT EXISTS  products(
-  product_id        INT    AUTO_INCREMENT,
-  product_name       VARCHAR(40),
-  supplier_id         INT,
-  unit_price       DECIMAL(10,3),
+  productId        INT    AUTO_INCREMENT,
+  productName       VARCHAR(40),
+  supplierId         INT,
+  unitPrice       DECIMAL(10,4),
   package            VARCHAR(50),
-  is_discontinued       ENUM('Y','N'),
+  isDiscontinued       ENUM('Y','N')  DEFAULT'N',
 
-  PRIMARY KEY (product_id)
+  PRIMARY KEY (productId)
 );
 
 
 
 
-DROP TABLE IF EXISTS Customers;
+DROP TABLE IF EXISTS customers;
 
-CREATE TABLE IF NOT EXISTS Customers(
-  CustomerId    INT  AUTO_INCREMENT,
-  FirstName       VARCHAR(255),
-  LastName        VARCHAR(30),
-  City               VARCHAR(15),
-  Country            VARCHAR(15),
-  Phone              VARCHAR(24),
-  Fax                VARCHAR(24),
+CREATE TABLE IF NOT EXISTS customers(
+  customerId    INT  AUTO_INCREMENT,
+  firstName       VARCHAR(20),
+  lastName        VARCHAR(30),
+  city               VARCHAR(15),
+  country            VARCHAR(15),
+  phone              VARCHAR(24),
+  fax                VARCHAR(24),
 
-  PRIMARY KEY   (CustomerID)
-);
-
-
-
-
-
-
-
-DROP TABLE IF EXISTS order_info;
-
-CREATE TABLE order_info (
-    order_info_id       INT     AUTO_INCREMENT,
-    order_id            INT,
-    product_id          INT,
-    product_quantity    INT,
-
-
-    PRIMARY KEY (order_info_id),
-    FOREIGN KEY (product_id)  REFERENCES  products(product_id)
+  PRIMARY KEY   (customerId)
 );
 
 
 DROP TABLE IF EXISTS orders;
 
-CREATE TABLE orders (
-    order_id       INT    AUTO_INCREMENT,
-    order_date     DATE,
-    order_info_id  INT,
-    order_value    INT,
-    order_currency VARCHAR(10),
+CREATE TABLE IF NOT EXISTS orders(
+  orderId    INT  AUTO_INCREMENT,
+  orderDate       DATE,
+  customerId        INT,
+  totalAmount       DECIMAL(10,4),
 
-    PRIMARY KEY (order_id),
-    FOREIGN KEY (order_info_id)  REFERENCES  order_info(order_info_id)
+  PRIMARY KEY   (orderId)
 );
+
+DROP TABLE IF EXISTS orderItems;
+
+CREATE TABLE IF NOT EXISTS orderItems(
+  orderItemId    INT  AUTO_INCREMENT,
+  orderId          INT,
+  productId        INT,
+  unitPrice        DECIMAL(10,4),
+  quantity       INT,
+
+  PRIMARY KEY   (orderItemId)
+);
+
 
 
 
