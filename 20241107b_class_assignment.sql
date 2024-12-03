@@ -44,4 +44,4 @@ SELECT
     USER() AS 'BY',
     DATABASE() AS 'ON',
     NOW() AS 'AT';
-    
+-- end of class assignment

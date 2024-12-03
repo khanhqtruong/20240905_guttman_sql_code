@@ -95,8 +95,8 @@ AS
             AND 
             dept_data =  (SELECT usf_get_max_date(e_emp_no));
     END//
-
-
+    
+DELIMITER;
 
     CALL usp_get_employee_dept(10010);
     --  Completion message
@@ -106,4 +106,4 @@ AS
         DATABASE() AS 'ON',
         NOW() AS 'AT';
         
-
+-- End of class assignment

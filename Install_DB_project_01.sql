@@ -22,7 +22,7 @@ CREATE DATABASE IF NOT EXISTS my_project_db
 -- This is the whole statement ; means end of the SQL statement
 CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 
--- Let's see if the database is created.
+
 SHOW DATABASES;
 SELECT ''  AS '###############################################';
 
@@ -31,10 +31,8 @@ USE my_project_db;
 
 -- Let's create some tables
 
--- Closing print statement
 
-
--- This is TABLE # 1
+-- This is TABLE # 1 category
 
 DROP TABLE IF EXISTS category;
 
@@ -45,7 +43,7 @@ CREATE TABLE IF NOT EXISTS category (
     PRIMARY KEY (category_id)
 );
 
--- This is TABLE #2
+-- This is TABLE #2 vendor
 
 DROP TABLE IF EXISTS vendor;
 
@@ -57,7 +55,7 @@ CREATE TABLE IF NOT EXISTS vendor(
 );
 
 
---  This is TABLE # 3
+--  This is TABLE # 3 product
 DROP TABLE IF EXISTS product;
 
 CREATE TABLE IF NOT EXISTS product(
@@ -74,7 +72,7 @@ CREATE TABLE IF NOT EXISTS product(
 
 );
 
---  This is TABLE # 4
+--  This is TABLE # 4- region
 DROP TABLE IF EXISTS region;
 
 CREATE TABLE IF NOT EXISTS region(
@@ -85,7 +83,7 @@ CREATE TABLE IF NOT EXISTS region(
 
 );
 
---  This is TABLE # 5
+--  This is TABLE store
 DROP TABLE IF EXISTS store;
 
 CREATE TABLE IF NOT EXISTS store(
@@ -110,7 +108,7 @@ CREATE TABLE IF NOT EXISTS customer(
 
 );
 
--- This is TABLE #7 (sold_via)
+-- This is TABLE #7 (sales_transaction)
 
 DROP TABLE IF EXISTS sales_transaction;
 
@@ -126,12 +124,11 @@ CREATE TABLE IF NOT EXISTS sales_transaction(
 
 );
 
--- This is TABLE #8 (sale_transaction)
+-- This is TABLE #8 (sold_via)
 
 DROP TABLE IF EXISTS sold_via;
 
--- change this to 
--- 
+
 CREATE TABLE IF NOT EXISTS sold_via(
     product_id      CHAR(3),
     t_id            VARCHAR(8),
@@ -141,6 +138,6 @@ CREATE TABLE IF NOT EXISTS sold_via(
     PRIMARY KEY (product_id, t_id)
 );
 
-
+SHOW TABLES;
 
                                     

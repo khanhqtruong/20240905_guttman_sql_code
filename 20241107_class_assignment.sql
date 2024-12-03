@@ -4,7 +4,7 @@
     employee number, retrieves the number and name of the last
     department where the employee worked.
 */
-SYSTEM CLS;
+-- SYSTEM CLS;
 -- Opening print statement
 SELECT 'LINE 09'  AS 'Installation Starting!!!';
 SELECT USER()  AS 'INSTALLATION USER';
